@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "s3" {
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "meu_lifecycle" {
-  bucket = aws_s3_bucket.meu_bucket.bucket
+  bucket = aws_s3_bucket.s3.bucket
 
   rule {
     id        = "expiracao_de_objetos"

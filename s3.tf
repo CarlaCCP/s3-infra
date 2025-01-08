@@ -13,7 +13,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "meu_lifecycle" {
 
   rule {
     id        = "expiracao_de_objetos"
-    enabled   = true
+    status   = "Enabled"
 
     expiration {
       days = 1

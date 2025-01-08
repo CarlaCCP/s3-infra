@@ -1,10 +1,22 @@
 resource "aws_s3_bucket" "s3" {
   bucket = "storage-image-extractor"
-  expiration = {
-    days = 1
-  }
+  acl    = "private"
+
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "meu_lifecycle" {
+  bucket = aws_s3_bucket.meu_bucket.bucket
+
+  rule {
+    id        = "expiracao_de_objetos"
+    enabled   = true
+
+    expiration {
+      days = 1
+    }
   }
 }
